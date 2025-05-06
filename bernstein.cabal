@@ -1,0 +1,73 @@
+cabal-version: 3.0
+
+name:                   bernstein
+version:                0.0.1
+synopsis:               Bernstein polynomials
+description:            Bernstein polynomials
+category:               Maths
+copyright:              2025 Nadia Chambers
+author:                 Nadia Chambers
+maintainer:             nadia.chambers@iohk.io
+license:                D-FSL-1.0
+build-type:             Simple
+-- extra-doc-files:        ChangeLog.md
+
+common project-config
+  default-language:     GHC2024
+  default-extensions:   AllowAmbiguousTypes
+                        BlockArguments
+                        DataKinds
+                        ExplicitNamespaces
+                        NPlusKPatterns
+                        OverloadedStrings
+                        PackageImports
+                        PartialTypeSignatures
+                        RecordWildCards
+  build-depends:        base
+                      , containers
+                      , equational-reasoning
+                      , extra
+                      , finite-typelits
+                      , ghc-typelits-knownnat
+                      , ghc-typelits-natnormalise
+                      , ghc-typelits-presburger
+                      , monad-extras
+                      , monads-tf
+                      , text
+                      , transformers
+                      , type-natural
+                      , vector-sized
+  ghc-options:          -Wall
+                        -Wcompat
+                        -Wincomplete-record-updates
+                        -Wincomplete-uni-patterns
+                        -Wno-unticked-promoted-constructors
+                        -Wpartial-fields
+                        -Wredundant-constraints
+                        -Wunused-packages
+                        -fprint-potential-instances
+                        -- -fplugin GHC.TypeLits.KnownNat.Solver
+                        -- -fplugin GHC.TypeLits.Normalise
+                        -- -fplugin GHC.TypeLits.Presburger
+                        -fplugin Data.Type.Natural.Presburger.MinMaxSolver
+
+library
+  import:               project-config
+  hs-source-dirs:       src
+  exposed-modules:      Numeric.Polynomial.Bernstein
+  other-modules:
+  autogen-modules:
+  ghc-options:          -fplugin GHC.TypeLits.KnownNat.Solver
+                        -fplugin GHC.TypeLits.Normalise
+
+test-suite bernstein-test
+  import:               project-config
+  ghc-options:          -main-is Test.test
+  hs-source-dirs:       test
+  main-is:              Test.lhs
+  type:                 exitcode-stdio-1.0
+
+  build-depends:        bernstein
+                      , optparse-applicative
+  ghc-options:          -fplugin GHC.TypeLits.KnownNat.Solver
+                        -fplugin GHC.TypeLits.Normalise
