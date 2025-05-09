@@ -24,7 +24,9 @@ common project-config
                         PartialTypeSignatures
                         RecordWildCards
                         ViewPatterns
-  build-depends:        base
+  build-depends:      , base
+                      , combinatorial
+                      , composition-extra
                       , containers
                       , equational-reasoning
                       , extra
@@ -47,9 +49,9 @@ common project-config
                         -Wredundant-constraints
                         -Wunused-packages
                         -fprint-potential-instances
-                        -- -fplugin GHC.TypeLits.KnownNat.Solver
-                        -- -fplugin GHC.TypeLits.Normalise
-                        -- -fplugin GHC.TypeLits.Presburger
+                        -fplugin GHC.TypeLits.KnownNat.Solver
+                        -fplugin GHC.TypeLits.Normalise
+                        -fplugin GHC.TypeLits.Presburger
                         -fplugin Data.Type.Natural.Presburger.MinMaxSolver
 
 library
