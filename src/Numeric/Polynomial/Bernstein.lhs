@@ -2,7 +2,7 @@
 %include polycode.fmt
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[backend=bibtex]{biblatex}
+\usepackage[backend=biber]{biblatex}
 \usepackage{comment}
 \usepackage{url}
 \addbibresource{farouki.bib}
