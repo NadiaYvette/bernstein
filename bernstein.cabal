@@ -23,6 +23,7 @@ common project-config
                         PackageImports
                         PartialTypeSignatures
                         RecordWildCards
+                        ViewPatterns
   build-depends:        base
                       , containers
                       , equational-reasoning
